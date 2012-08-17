@@ -5,7 +5,12 @@ window.log = ->
 class JsReplApp
 
     doEval: ->
-        snip = $("#inp-expr").val()
+        inp = $("#inp-expr")
+        inp.removeClass "dimmed"
+    
+        snip = inp.val()
+        inp.val ""
+    
         log "evaluating", snip
         res = ""
         try 
@@ -49,7 +54,7 @@ class JsReplApp
         0
         
     
-app = new JsReplApp    
+window.jsreplapp = new JsReplApp    
         
 $ ->
     app.start()
