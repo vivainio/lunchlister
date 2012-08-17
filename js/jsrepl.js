@@ -14,8 +14,17 @@
       var hp, jsonres, out, res, snip;
       snip = $("#inp-expr").val();
       log("evaluating", snip);
-      res = eval(snip);
-      jsonres = JSON.stringify(res);
+      res = "";
+      try {
+        res = eval(snip);
+      } catch (e) {
+        res = "Error: " + e;
+      }
+      try {
+        jsonres = JSON.stringify(res);
+      } catch (e2) {
+        jsonres = res.toString();
+      }
       hp = $("#historypanel");
       out = this.res_template({
         inputval: snip,
