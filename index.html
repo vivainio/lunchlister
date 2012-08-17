@@ -24,9 +24,15 @@
         <!-- header -->
         <div class="ui-content">
             <div class="prompt-panel">
-                <input id="inp-expr" type="text"></input>
-                <button
-                        onclick="mwl.addClass('#inp-expr', 'dimmed'); window.jsreplapp.doEval()" id="btn-execute" class="ui-button">Go!</button>
+                <table class="prompt-table">
+                    <tr>
+                        <td><input id="inp-expr" type="text"></input></td>
+                        <td><button
+                        onclick="mwl.addClass('#inp-expr', 'dimmed'); window.jsreplapp.doEval()" id="btn-execute" class="ui-button">Go!</button>                            
+                        </td>
+                    </tr>
+                </table>
+                
                     
                     <!--
                     
@@ -42,7 +48,6 @@
                 </div>
             </div>
             
- 		
         </div>
         
         
