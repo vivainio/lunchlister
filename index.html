@@ -10,7 +10,10 @@
     <script src="lib/jquery-1.8.0.js"></script>    
     <script src="lib/json2.js"></script>
     <script src="lib/underscore.js"></script>
-    <script src="js/jsrepl.js"></script>
+    <script src="lib/handlebars-1.0.0.beta.6.js"></script>
+    <script src="lib/backbone.js"></script>
+    <script src="js/sodexo.js"></script>
+    
     <script type="text/javascript">		
 		function refreshPageContent() {
 				// Add code for refreshing te page here...				
@@ -20,33 +23,33 @@
 </head>
 
 <body>
+    
+    <div id="food-entry-template" class="hbtemplate">
+        
+        {{#each places}}
+        <div class="fplace">
+        <div class="fplacename">{{placename}}</div>
+        
+            <div class="food_entries">
+            {{#each food_entries}}
+                <div class="fcategory">
+                    {{category}}
+                    
+                </div>
+                <div class="ftitle_fi">
+                    {{title_fi}}            
+                </div>
+            {{/each}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
     <div class="ui-page">
         <!-- header -->
         <div class="ui-content">
-            <div class="prompt-panel">
-                <table class="prompt-table">
-                    <tr>
-                        <td><input id="inp-expr" type="text"></input></td>
-                        <td><button
-                        onclick="mwl.addClass('#inp-expr', 'dimmed'); window.jsreplapp.doEval()" id="btn-execute" class="ui-button">Go!</button>                            
-                        </td>
-                    </tr>
-                </table>
-                
-                    
-                    <!--
-                    
-                    This didn't work!
-                    onclick="mwl.addClass('#inp-expr', 'dimmed')
-                    -->
-            </div>
-            
-            <div id="historypanel">
-                <div class="historyentry">
-                    <div class="in">1+1</div>
-                    <div class="out">2</div>
-                </div>
-            </div>
+        
+            <div id="menu-area"></div>            
             
         </div>
         
