@@ -6,6 +6,7 @@
     <title>AshaJsRepl</title>
     <link href="s40-theme/css/s40-theme.css" rel="stylesheet" type="text/css" />
     <link href="css/jsrepl_asha_style.css" rel="stylesheet" type="text/css" />
+    <link href="css/lunchlist.css" rel="stylesheet" type="text/css" />
     <script language="javascript" type="text/javascript" src="s40-theme/js/screensize.js"></script>
     <script src="lib/jquery-1.8.0.js"></script>    
     <script src="lib/json2.js"></script>
@@ -28,7 +29,7 @@
         
         {{#each places}}
         <div class="fplace">
-        <div class="fplacename">{{placename}}</div>
+        <h1 class="fplacename">{{placename}}</h1>
         
             <div class="food_entries">
             {{#each food_entries}}
