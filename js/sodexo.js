@@ -61,7 +61,7 @@
     }
 
     LunchLister.prototype.start = function() {
-      var d, dstring, id, name, places, promises, url, urlForPlace, _fn, _i, _len, _ref,
+      var d, dstring, id, lang, name, places, promises, url, urlForPlace, _fn, _i, _len, _ref,
         _this = this;
       $("#sub").on("click", function() {
         return log("Nappia!");
@@ -73,8 +73,9 @@
 
       d = new Date();
       dstring = "" + (d.getFullYear()) + "/" + (d.getMonth() + 1) + "/" + (d.getDate());
+      lang = "fi";
       urlForPlace = function(placeid) {
-        return "http://www.sodexo.fi/ruokalistat/output/daily_json/" + placeid + "/" + dstring + "/fi?mobileRedirect=false";
+        return "http://www.sodexo.fi/ruokalistat/output/daily_json/" + placeid + "/" + dstring + "/" + lang + "?mobileRedirect=false";
       };
       places = [["Hermia 3", 731], ["Hermia 6", 424]];
       promises = [];
@@ -83,6 +84,7 @@
         return promises.push($.ajax({
           url: url,
           async: false,
+          crossDomain: false,
           dataType: "json",
           success: function(resp) {
             log("Got", resp, "for", url);
@@ -95,6 +97,7 @@
         url = urlForPlace(id);
         _fn(name, url);
       }
+      log("All sent out!");
       return $.when.apply($, promises).done(function() {
         log("Should render now!");
         return $("#menu-area").append(_this.lv.render().el);

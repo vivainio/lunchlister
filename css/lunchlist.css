@@ -6,9 +6,9 @@
 }
 
 .fcategory {
-    float: right;
+    margin-left: 40px;
+    font-weight: bold;
 }
 
-.ftitle_fi {
-    clear: right;
+.ftitle_fi {    
 }

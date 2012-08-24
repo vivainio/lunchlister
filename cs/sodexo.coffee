@@ -73,17 +73,19 @@ class LunchLister
 
         d = new Date()
         dstring = "#{d.getFullYear()}/#{d.getMonth()+1}/#{d.getDate()}"
-        
+
+        lang = "fi"        
         #new Date().toString("yyyy/MM/
         urlForPlace = (placeid) ->
-            return "http://www.sodexo.fi/ruokalistat/output/daily_json/#{placeid}/#{dstring}/fi?mobileRedirect=false"
+            return "http://www.sodexo.fi/ruokalistat/output/daily_json/#{placeid}/#{dstring}/#{lang}?mobileRedirect=false"
             
 
         places = [
             ["Hermia 3", 731],
             ["Hermia 6", 424]]
         
-        promises = []    
+        promises = []
+            
         for [name,id] in places
             
             url = urlForPlace id
@@ -92,12 +94,14 @@ class LunchLister
                 promises.push $.ajax
                     url: url
                     async: false
+                    crossDomain: false
                     dataType: "json"
                     success: (resp) =>
                         log "Got",resp, "for",url
                         @lv.addResponse name, resp
         
         
+        log "All sent out!"
         $.when.apply($, promises).done =>
             log "Should render now!"
             $("#menu-area").append(@lv.render().el)
