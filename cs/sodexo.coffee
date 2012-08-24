@@ -87,9 +87,11 @@ class LunchLister
         for [name,id] in places
             
             url = urlForPlace id
-            do (name, url) =>            
+            do (name, url) =>
+                log "Sending request for ",url
                 promises.push $.ajax
-                    url: url            
+                    url: url
+                    async: false
                     dataType: "json"
                     success: (resp) =>
                         log "Got",resp, "for",url

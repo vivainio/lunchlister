@@ -79,8 +79,10 @@
       places = [["Hermia 3", 731], ["Hermia 6", 424]];
       promises = [];
       _fn = function(name, url) {
+        log("Sending request for ", url);
         return promises.push($.ajax({
           url: url,
+          async: false,
           dataType: "json",
           success: function(resp) {
             log("Got", resp, "for", url);
